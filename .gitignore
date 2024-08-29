@@ -1,0 +1,8 @@
+.git
+.vscode
+build
+make
+CMakeFiles/
+*.pdb
+CMakeCache.txt
+.cache/
