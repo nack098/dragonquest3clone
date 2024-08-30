@@ -37,7 +37,7 @@ class Main {
     void _update_entities();
 
   public:
-    static void log(const char *message) { Main::logs.push_back(message); }
+    static void log(const char *message);
     static std::vector<const char *> get_logs() { return Main::logs; }
     static void clear_logs() { Main::logs.clear(); }
     void init();

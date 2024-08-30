@@ -1,5 +1,8 @@
 #include "render_engine.hpp"
+#include "SDL3/SDL_log.h"
+#include "SDL3_ttf/SDL_ttf.h"
 #include "game.hpp"
+#include <string.h>
 
 RenderEngine::Engine::Engine() {
     if (SDL_Init(SDL_INIT_VIDEO || SDL_INIT_AUDIO || SDL_INIT_TIMER) < 0) {
@@ -7,22 +10,23 @@ RenderEngine::Engine::Engine() {
     }
 
     if (TTF_Init() < 0) {
-        SDL_Log("SDL_ttf could not initialize! SDL_Error: %s\n", SDL_GetError());
-    }
-
-    if (CONSOLE != 0) {
-        WindowConfig *config = new WindowConfig();
-        config->width = CONSOLE_WIDTH;
-        config->height = CONSOLE_HEIGHT;
-        config->name = "Console";
-        consoleWindow = new Window(config);
+        SDL_Log("SDL_ttf could not initialize! SDL_Error: %s\n",
+                SDL_GetError());
     }
 
     WindowConfig *config = new WindowConfig();
     config->width = WIDTH;
     config->height = HEIGHT;
-    config->name = "Main";
+    config->name = "Dragon Quest 3 Clone";
     mainWindow = new Window(config);
+
+    if (CONSOLE != 0) {
+        config = new WindowConfig();
+        config->width = CONSOLE_WIDTH;
+        config->height = CONSOLE_HEIGHT;
+        config->name = "Console";
+        consoleWindow = new Window(config);
+    }
 }
 
 void RenderEngine::Engine::start(Game::Main *game) {
@@ -62,12 +66,12 @@ void RenderEngine::Engine::start(Game::Main *game) {
 
         game->update();
 
-        if (mainWindow != NULL) {
-            mainWindow->render([]() {});
-        }
-
         if (consoleWindow != NULL) {
-            for (const char *log : Game::Main::get_logs()) {
+            std::vector<const char *> logs = Game::Main::get_logs();
+            if (logs.size() == 0 && console_history.size() == 0) {
+                consoleWindow->render([]() {});
+            }
+            for (const char *log : logs) {
                 _log(log);
             }
             Game::Main::clear_logs();
@@ -77,15 +81,53 @@ void RenderEngine::Engine::start(Game::Main *game) {
                 delete temp;
             }
         }
+
+        if (mainWindow != NULL) {
+            SDL_SetRenderDrawColor(mainWindow->get_renderer(), 0, 0, 0, 255);
+        }
     }
 }
 
 void RenderEngine::Engine::_log(const char *message) {
-    TTF_Font *font = TTF_OpenFont("assets/fonts/FiraCode-Medium.ttf", 14);
+    TTF_Font *font =
+        TTF_OpenFont("assets/fonts/FiraCode-Medium.ttf", CONSOLE_FONT_SIZE);
     TTF_SetFontStyle(font, TTF_STYLE_NORMAL);
-    SDL_Surface *text = TTF_RenderUTF8_Solid(font, message, {255, 255, 255, 255});
+    _update_history(message);
+    SDL_Color fg, bg;
+    fg.r = 255;
+    fg.g = 255;
+    fg.b = 255;
+    fg.a = 255;
+    bg.r = 0;
+    bg.g = 0;
+    bg.b = 0;
+    bg.a = 255;
+    consoleWindow->render([this, font, fg, bg]() {
+        int i = 0;
+        for (const char *history : this->console_history) {
+            SDL_Surface *surface = TTF_RenderUTF8_LCD(font, history, fg, bg);
+            SDL_Texture *texture = SDL_CreateTextureFromSurface(
+                consoleWindow->get_renderer(), surface);
+            SDL_FRect rect;
+            rect.x = (float)CONSOLE_PADDING_X;
+            rect.y = (float)CONSOLE_PADDING_Y + i * CONSOLE_FONT_SIZE * 1.5f;
+            rect.w = (float)surface->w;
+            rect.h = (float)surface->h;
+            SDL_RenderTexture(consoleWindow->get_renderer(), texture, NULL,
+                              &rect);
+            SDL_DestroyTexture(texture);
+            ++i;
+        }
+    });
     SDL_Log("%s\n", message);
-    // TODO: Change to dearImGui for text rendering instead
+    TTF_CloseFont(font);
+}
+
+void RenderEngine::Engine::_update_history(const char *message) {
+    if (this->console_history.size() >= CONSOLE_LINE_AMOUNT) {
+        this->console_history.erase(this->console_history.begin());
+    }
+    this->console_history.push_back(message);
 }
 
 RenderEngine::Engine::~Engine() {

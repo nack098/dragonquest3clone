@@ -7,25 +7,29 @@ extern "C" {
 #include "game.hpp"
 #include <cstdlib>
 #include <functional>
-#include <iostream>
 #include <string>
 #include <vector>
 
-#define WIDTH 1280
-#define HEIGHT 720
+#define WIDTH 1024
+#define HEIGHT 896
 #define FPS 60
 #define FULLSCREEN 0
 #define CONSOLE 1
 #define CONSOLE_WIDTH 640
 #define CONSOLE_HEIGHT 480
+#define CONSOLE_PADDING_X 30
+#define CONSOLE_PADDING_Y 40
+#define CONSOLE_FONT_SIZE 14
+#define CONSOLE_LINE_AMOUNT                                                    \
+    (int)((CONSOLE_HEIGHT - 2 * CONSOLE_PADDING_Y) / (CONSOLE_FONT_SIZE * 1.5))
 
 namespace RenderEngine {
 
-class WindowConfig {
+typedef struct windowconfig {
   public:
     int width, height, fps, fullscreen;
     std::string name;
-};
+} WindowConfig;
 
 class Window {
   private:
@@ -49,6 +53,8 @@ class Engine {
   private:
     Window *mainWindow = NULL;
     Window *consoleWindow = NULL;
+    std::vector<const char *> console_history;
+    void _update_history(const char *message);
     void _log(const char *message);
 
   public:

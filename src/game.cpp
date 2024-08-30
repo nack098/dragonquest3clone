@@ -24,17 +24,19 @@ void Game::Main::init() {
     this->entities.push_back(new Player());
 }
 
+void Game::Main::log(const char *message) { Main::logs.push_back(message); }
+
 void Game::Main::update() { this->_update_entities(); }
 
 void Game::Player::update() {
     Uint8 *input = InputData::get_instance()->get_keyboard_state();
     if (input[SDL_SCANCODE_UP]) {
-        Main::log("Player moving up");
+        Main::log("(Game::Player) >> Player moving up");
     } else if (input[SDL_SCANCODE_DOWN]) {
-        Main::log("Player moving down");
+        Main::log("(Game::Player) >> Player moving down");
     } else if (input[SDL_SCANCODE_LEFT]) {
-        Main::log("Player moving left");
+        Main::log("(Game::Player) >> Player moving left");
     } else if (input[SDL_SCANCODE_RIGHT]) {
-        Main::log("Player moving right");
+        Main::log("(Game::Player) >> Player moving right");
     }
 }
