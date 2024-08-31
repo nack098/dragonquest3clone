@@ -49,12 +49,17 @@ class Enemy : public Entity {
 class Main {
     std::vector<Entity *> entities;
     static std::vector<const char *> logs;
+    static std::vector<void *> pointer_to_release;
     void _update_entities();
 
   public:
     static void log(const char *message);
+    static void add_to_release(void *pointer) {
+        Main::pointer_to_release.push_back(pointer);
+    }
     static std::vector<const char *> get_logs() { return Main::logs; }
     static void clear_logs() { Main::logs.clear(); }
+    static void release_memory();
     void init();
     void update();
 };

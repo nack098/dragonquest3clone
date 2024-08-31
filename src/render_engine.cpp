@@ -85,6 +85,8 @@ void RenderEngine::Engine::start(Game::Main *game) {
         if (mainWindow != NULL) {
             SDL_SetRenderDrawColor(mainWindow->get_renderer(), 0, 0, 0, 255);
         }
+
+        Game::Main::release_memory();
     }
 }
 

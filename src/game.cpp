@@ -2,6 +2,7 @@
 
 Game::InputData *Game::InputData::instance;
 std::vector<const char *> Game::Main::logs;
+std::vector<void *> Game::Main::pointer_to_release;
 
 void Game::Main::init() {
     // Initialize Singleton
@@ -46,6 +47,13 @@ Game::InputData *Game::InputData::get_instance() {
         InputData::instance = new InputData();
     }
     return instance;
+}
+
+void Game::Main::release_memory() {
+    for (void *pointer : Main::pointer_to_release) {
+        free(pointer);
+    }
+    Main::pointer_to_release.clear();
 }
 
 void Game::Main::log(const char *message) { Main::logs.push_back(message); }
