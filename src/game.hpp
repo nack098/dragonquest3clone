@@ -4,8 +4,12 @@ extern "C" {
 #include <SDL3/SDL_stdinc.h>
 }
 #include <vector>
-
 namespace Game {
+
+#define UP 0x00
+#define DOWN 0x01
+#define RIGHT 0x02
+#define LEFT 0x03
 
 class InputData {
     Uint8 *keyboard_state;
@@ -18,18 +22,29 @@ class InputData {
     Uint8 *get_keyboard_state() { return this->keyboard_state; }
 };
 
-class Entity {
-  public:
+struct Entity {
+    char direction;
+    int x, y;
     virtual void update() {};
 };
 
 class Player : public Entity {
+    void player_move(char direction);
+
   public:
-    Player() = default;
+    Player() {
+        this->x = 0;
+        this->y = 0;
+        this->direction = DOWN;
+    }
     void update() override;
 };
 
-class Enemy : public Entity {};
+class Enemy : public Entity {
+  public:
+    Enemy() = default;
+    void update() override;
+};
 
 class Main {
     std::vector<Entity *> entities;
