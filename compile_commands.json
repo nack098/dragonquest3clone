@@ -1459,20 +1459,38 @@
 },
 {
   "directory": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/make/src",
-  "command": "C:/msys64/ucrt64/bin/c++.exe  @CMakeFiles/dragonquest3clone.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/dragonquest3clone.dir/main.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/main.cpp\"",
-  "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/main.cpp",
-  "output": "src/CMakeFiles/dragonquest3clone.dir/main.cpp.obj"
+  "command": "C:/msys64/ucrt64/bin/c++.exe  @CMakeFiles/renderer.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/renderer.dir/engine.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/engine.cpp\"",
+  "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/engine.cpp",
+  "output": "src/CMakeFiles/renderer.dir/engine.cpp.obj"
 },
 {
   "directory": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/make/src",
-  "command": "C:/msys64/ucrt64/bin/c++.exe  @CMakeFiles/dragonquest3clone.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/dragonquest3clone.dir/render_engine.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/render_engine.cpp\"",
-  "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/render_engine.cpp",
-  "output": "src/CMakeFiles/dragonquest3clone.dir/render_engine.cpp.obj"
+  "command": "C:/msys64/ucrt64/bin/c++.exe  @CMakeFiles/renderer.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/renderer.dir/window.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/window.cpp\"",
+  "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/window.cpp",
+  "output": "src/CMakeFiles/renderer.dir/window.cpp.obj"
 },
 {
   "directory": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/make/src",
-  "command": "C:/msys64/ucrt64/bin/c++.exe  @CMakeFiles/dragonquest3clone.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/dragonquest3clone.dir/game.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/game.cpp\"",
+  "command": "C:/msys64/ucrt64/bin/c++.exe -Dgame_EXPORTS @CMakeFiles/game.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/game.dir/game.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/game.cpp\"",
   "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/game.cpp",
-  "output": "src/CMakeFiles/dragonquest3clone.dir/game.cpp.obj"
+  "output": "src/CMakeFiles/game.dir/game.cpp.obj"
+},
+{
+  "directory": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/make/src",
+  "command": "C:/msys64/ucrt64/bin/c++.exe -Dgame_EXPORTS @CMakeFiles/game.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/game.dir/player.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/player.cpp\"",
+  "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/player.cpp",
+  "output": "src/CMakeFiles/game.dir/player.cpp.obj"
+},
+{
+  "directory": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/make/src",
+  "command": "C:/msys64/ucrt64/bin/c++.exe -Dgame_EXPORTS @CMakeFiles/game.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/game.dir/input_data.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/input_data.cpp\"",
+  "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/input_data.cpp",
+  "output": "src/CMakeFiles/game.dir/input_data.cpp.obj"
+},
+{
+  "directory": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/make/src",
+  "command": "C:/msys64/ucrt64/bin/c++.exe  @CMakeFiles/DragonQuest3Clone.dir/includes_CXX.rsp -Wall -Wextra -Wpedantic -o CMakeFiles/DragonQuest3Clone.dir/main.cpp.obj -c \"D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/main.cpp\"",
+  "file": "D:/Nack_Files/works/Programming Projects/dragonquest3clone/src/main.cpp",
+  "output": "src/CMakeFiles/DragonQuest3Clone.dir/main.cpp.obj"
 }
 ]

@@ -1,9 +1,9 @@
-#include "game.hpp"
-#include "render_engine.hpp"
+#include "DragonQuest3Clone/engine.hpp"
+#include "DragonQuest3Clone/game.hpp"
 
-int main(int, char **) {
+int main(void) {
     SDL_SetLogPriorities(SDL_LOG_PRIORITY_VERBOSE);
-    RenderEngine::Engine engine;
+    Renderer::Engine engine;
     Game::Main game;
     engine.start(&game);
     return 0;
