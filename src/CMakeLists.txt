@@ -1,3 +1,16 @@
+# Utils
+add_library(utils
+    STATIC
+        input_data.cpp
+        scene_composer.cpp
+    )
+
+target_link_libraries(utils
+    PRIVATE 
+        SDL3
+        SDL3_ttf
+    )
+
 # Renderer
 add_library(renderer
     STATIC
@@ -8,6 +21,7 @@ add_library(renderer
 
 target_link_libraries(renderer
     PRIVATE 
+        utils
         SDL3
         SDL3_ttf
     )
@@ -17,12 +31,12 @@ add_library(game
     STATIC
         game.cpp
         player.cpp
-        input_data.cpp
     )
 
 
 target_link_libraries(game
     PRIVATE 
+        utils
         renderer
         SDL3
         SDL3_ttf
@@ -38,6 +52,7 @@ target_sources(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE 
+        utils
         renderer
         game
         SDL3

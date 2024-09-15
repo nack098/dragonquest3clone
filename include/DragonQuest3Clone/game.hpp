@@ -12,11 +12,13 @@ namespace Game {
 class Main {
     std::vector<Entity *> entities;
     void _update_entities();
+    static Main *instance;
+    Main() = default;
 
   public:
-    static void log(const char *message);
-    static void release_memory();
-    static std::vector<Entity *> get_render_queue();
+    static Main *get_instance();
+
+    std::vector<Entity *> get_render_queue();
     void init();
     void update();
 };

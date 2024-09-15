@@ -1,4 +1,8 @@
 #include "DragonQuest3Clone/renderer.hpp"
+#include "DragonQuest3Clone/utilities.hpp"
+
+using Utilities::InputData;
+using Utilities::SceneComposer;
 
 Renderer::Engine::Engine() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -23,6 +27,16 @@ void Renderer::Engine::_event_handler(SDL_Event *e) {
         mainWindow->close();
         break;
     }
+    case SDL_EVENT_KEY_DOWN: {
+        InputData *input_pipe = InputData::get_instance();
+        input_pipe->set_keyboard_state(e->key.key, true);
+        break;
+    }
+    case SDL_EVENT_KEY_UP: {
+        InputData *input_pipe = InputData::get_instance();
+        input_pipe->set_keyboard_state(e->key.key, false);
+        break;
+    }
     }
 }
 
@@ -37,8 +51,11 @@ void Renderer::Engine::start(Game::Main *game) {
         game->update();
 
         if (mainWindow != NULL) {
-            SDL_RenderPresent(mainWindow->get_renderer());
-            SDL_RenderClear(mainWindow->get_renderer());
+            SDL_Renderer *renderer = mainWindow->get_renderer();
+            SceneComposer *scene_composer = SceneComposer::get_instance();
+            scene_composer->compose(renderer, game);
+            SDL_RenderPresent(renderer);
+            SDL_RenderClear(renderer);
         }
     }
 }

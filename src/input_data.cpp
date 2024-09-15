@@ -1,8 +1,8 @@
 #include "DragonQuest3Clone/utilities.hpp"
 
-Game::InputData *Game::InputData::instance;
+Utilities::InputData *Utilities::InputData::instance;
 
-Game::InputData *Game::InputData::get_instance() {
+Utilities::InputData *Utilities::InputData::get_instance() {
     if (InputData::instance == nullptr) {
         InputData::instance = new InputData();
     }

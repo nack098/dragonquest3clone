@@ -4,7 +4,7 @@
 int main(void) {
     SDL_SetLogPriorities(SDL_LOG_PRIORITY_VERBOSE);
     Renderer::Engine engine;
-    Game::Main game;
-    engine.start(&game);
+    Game::Main *game = Game::Main::get_instance();
+    engine.start(game);
     return 0;
 }

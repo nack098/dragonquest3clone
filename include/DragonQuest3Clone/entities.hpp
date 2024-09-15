@@ -8,7 +8,10 @@ extern "C" {
 
 namespace Game {
 struct Entity {
-    char direction;
+    // WARNING: DON'T QUESTION IT NACK!!!
+    // We need to keep direction to render the sprite.
+    // OR YOU WANT TO FIX THIS AGAIN!!!
+    Direction direction;
     int x, y;
     virtual ~Entity() = default;
 };
@@ -27,7 +30,7 @@ class Player : public Entity, public IUpdateable {
         this->y = 0;
         this->direction = DOWN;
     }
-    void player_move(char direction);
+    void player_move(Direction direction);
     void update() override;
 };
 } // namespace Game
