@@ -8,7 +8,6 @@ add_library(utils
 target_link_libraries(utils
     PRIVATE 
         SDL3
-        SDL3_ttf
     )
 
 # Renderer
@@ -23,7 +22,6 @@ target_link_libraries(renderer
     PRIVATE 
         utils
         SDL3
-        SDL3_ttf
     )
 
 # Game
@@ -39,7 +37,6 @@ target_link_libraries(game
         utils
         renderer
         SDL3
-        SDL3_ttf
     )
 
 # Main
@@ -56,7 +53,6 @@ target_link_libraries(${PROJECT_NAME}
         renderer
         game
         SDL3
-        SDL3_ttf
     )
 
 target_include_directories(${PROJECT_NAME} 

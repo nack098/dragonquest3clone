@@ -9,11 +9,6 @@ Renderer::Engine::Engine() {
         SDL_Log("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
     }
 
-    if (TTF_Init() < 0) {
-        SDL_Log("SDL_ttf could not initialize! SDL_Error: %s\n",
-                SDL_GetError());
-    }
-
     WindowConfig *config = new WindowConfig();
     config->width = WIDTH;
     config->height = HEIGHT;
@@ -54,14 +49,16 @@ void Renderer::Engine::start(Game::Main *game) {
             SDL_Renderer *renderer = mainWindow->get_renderer();
             SceneComposer *scene_composer = SceneComposer::get_instance();
             scene_composer->compose(renderer, game);
+            // Black BG
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderPresent(renderer);
             SDL_RenderClear(renderer);
         }
+        SDL_Delay(1);
     }
 }
 
 Renderer::Engine::~Engine() {
     delete this->mainWindow;
-    TTF_Quit();
     SDL_Quit();
 }

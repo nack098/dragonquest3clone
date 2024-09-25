@@ -13,6 +13,10 @@ void Game::Main::init() {
     this->entities.push_back(new Player());
 }
 
+std::vector<Game::Entity *> Game::Main::get_render_queue() {
+    return this->entities;
+}
+
 void Game::Main::_update_entities() {
     for (Entity *entity : this->entities) {
         IUpdateable *updateable = dynamic_cast<IUpdateable *>(entity);
