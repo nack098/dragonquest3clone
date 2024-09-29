@@ -1,9 +1,10 @@
 #pragma once
 
-#include "engine.hpp"
-#include "window.hpp"
-#include "window_config.hpp"
+#include "DragonQuest3Clone/Renderer/engine.hpp"
+#include "DragonQuest3Clone/Renderer/window.hpp"
+#include "DragonQuest3Clone/Renderer/window_config.hpp"
 
+namespace Renderer {
 #define WIDTH 1024
 #define HEIGHT 896
 #define FPS 60
@@ -16,3 +17,5 @@
 #define CONSOLE_FONT_SIZE 14
 #define CONSOLE_LINE_AMOUNT                                                    \
     (int)((CONSOLE_HEIGHT - 2 * CONSOLE_PADDING_Y) / (CONSOLE_FONT_SIZE * 1.5))
+
+} // namespace Renderer

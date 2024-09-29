@@ -1,7 +1,7 @@
 #pragma once
 
-#include "game.hpp"
-#include "window.hpp"
+#include "DragonQuest3Clone/Renderer/window.hpp"
+#include "DragonQuest3Clone/game.hpp"
 #include <vector>
 
 namespace Renderer {

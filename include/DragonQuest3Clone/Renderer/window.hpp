@@ -4,7 +4,7 @@ extern "C" {
 #include <SDL3/SDL.h>
 }
 
-#include "window_config.hpp"
+#include "DragonQuest3Clone/Renderer/window_config.hpp"
 
 namespace Renderer {
 class Window {
