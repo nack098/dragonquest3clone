@@ -8,9 +8,9 @@ Progress Todo list
 
 #### Main Goal
 
-[x] Create pipeline connect renderer to main game
-[x] Render sprite on screen
-[x] Test moving logic with render sprite
+- [x] Create pipeline connect renderer to main game
+- [x] Render sprite on screen
+- [x] Test moving logic with render sprite
 
 #### Fix
 
@@ -26,10 +26,10 @@ Progress Todo list
 
 #### Main Goal
 
-[] Render background
-[] Camera moving system
-[] Prepare game state changing (For scene changing and fighting)
-[] Create buffer for input system
+- [] Render background
+- [] Camera moving system
+- [] Prepare game state changing (For scene changing and fighting)
+- [] Create buffer for input system
 
 #### Fix
 
