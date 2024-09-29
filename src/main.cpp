@@ -1,6 +1,5 @@
-#include "DragonQuest3Clone/engine.hpp"
+#include "DragonQuest3Clone/Renderer/engine.hpp"
 #include "DragonQuest3Clone/game.hpp"
-#include <cstdlib>
 
 int main(void) {
     SDL_SetLogPriorities(SDL_LOG_PRIORITY_VERBOSE);

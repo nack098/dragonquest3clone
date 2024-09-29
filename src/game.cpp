@@ -1,18 +1,18 @@
 #include "DragonQuest3Clone/game.hpp"
-#include "DragonQuest3Clone/utilities.hpp"
+#include "DragonQuest3Clone/Utilities/InputData.hpp"
 
 using Utilities::InputData;
 
 Game::Main *Game::Main::instance;
+ulong Game::Main::delta_time;
 
 void Game::Main::init() {
     // Initialize Singleton
     InputData::get_instance();
 
     // Initialize entities
-    this->entities.push_back(new Player());
+    this->entities.push_back(new Player("hero"));
 }
-
 std::vector<Game::Entity *> Game::Main::get_render_queue() {
     return this->entities;
 }

@@ -1,11 +1,16 @@
+#include "DragonQuest3Clone/Utilities/InputData.hpp"
+#include "DragonQuest3Clone/Utilities/SceneComposer.hpp"
 #include "DragonQuest3Clone/renderer.hpp"
-#include "DragonQuest3Clone/utilities.hpp"
+
+extern "C" {
+#include "SDL3/SDL_timer.h"
+}
 
 using Utilities::InputData;
 using Utilities::SceneComposer;
 
 Renderer::Engine::Engine() {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         SDL_Log("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
     }
 
@@ -17,18 +22,17 @@ Renderer::Engine::Engine() {
 }
 
 void Renderer::Engine::_event_handler(SDL_Event *e) {
+    InputData *input_pipe = InputData::get_instance();
     switch (e->type) {
     case SDL_EVENT_QUIT: {
         mainWindow->close();
         break;
     }
     case SDL_EVENT_KEY_DOWN: {
-        InputData *input_pipe = InputData::get_instance();
         input_pipe->set_keyboard_state(e->key.key, true);
         break;
     }
     case SDL_EVENT_KEY_UP: {
-        InputData *input_pipe = InputData::get_instance();
         input_pipe->set_keyboard_state(e->key.key, false);
         break;
     }
@@ -37,11 +41,20 @@ void Renderer::Engine::_event_handler(SDL_Event *e) {
 
 void Renderer::Engine::start(Game::Main *game) {
     game->init();
+    ulong a = 0, b = 0, delta_time;
     while (!mainWindow->isQuit()) {
         SDL_Event e;
         while (SDL_PollEvent(&e) != 0) {
             this->_event_handler(&e);
         }
+
+        a = SDL_GetTicks();
+        delta_time = a - b;
+        if (delta_time < 1000 / 60.0)
+            continue;
+        b = a;
+
+        game->delta_time = delta_time;
 
         game->update();
 

@@ -1,5 +1,5 @@
+#include "DragonQuest3Clone/Utilities/InputData.hpp"
 #include "DragonQuest3Clone/entities.hpp"
-#include "DragonQuest3Clone/utilities.hpp"
 #include "SDL3/SDL_keycode.h"
 #include <unordered_map>
 
@@ -16,13 +16,15 @@ void Game::Player::_update_input() {
         this->player_move(LEFT);
     } else if (input[SDLK_RIGHT]) {
         this->player_move(RIGHT);
+    } else {
+        this->is_moving = false;
     }
 }
 
 void Game::Player::player_move(Game::Direction to_direction) {
 
     // TODO: Make translation logic. Make it's smooth.
-
+    this->is_moving = true;
     switch (to_direction) {
     case UP:
         this->y -= 1 * Constants.player_speed;
@@ -40,4 +42,7 @@ void Game::Player::player_move(Game::Direction to_direction) {
     this->direction = to_direction;
 }
 
-void Game::Player::update() { _update_input(); }
+void Game::Player::update() {
+    _update_input();
+    Human::update();
+}

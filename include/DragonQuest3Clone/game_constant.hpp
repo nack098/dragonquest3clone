@@ -1,5 +1,8 @@
 #pragma once
-
+extern "C" {
+#include "SDL3/SDL_log.h"
+}
+#include <string>
 namespace Game {
 
 enum Direction : char {
@@ -9,7 +12,23 @@ enum Direction : char {
     LEFT = 0x03,
 };
 
+inline std::string ToString(Direction direction) {
+    switch (direction) {
+    case UP:
+        return "up";
+    case DOWN:
+        return "down";
+    case RIGHT:
+        return "right";
+    case LEFT:
+        return "left";
+    }
+    SDL_LogError(SDL_LOG_CATEGORY_ERROR, "CRITICAL: %s",
+                 "WRONG DIRECTION DETECTED TERMINATING...");
+    exit(1);
+}
+
 const struct {
-    char player_speed = 30;
+    char player_speed = 5;
 } Constants;
 } // namespace Game

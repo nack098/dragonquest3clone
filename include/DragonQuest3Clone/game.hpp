@@ -17,7 +17,7 @@ class Main {
 
   public:
     static Main *get_instance();
-
+    static ulong delta_time;
     std::vector<Entity *> get_render_queue();
     void init();
     void update();

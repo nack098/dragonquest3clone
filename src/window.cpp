@@ -1,4 +1,4 @@
-#include "DragonQuest3Clone/window.hpp"
+#include "DragonQuest3Clone/Renderer/window.hpp"
 
 int Renderer::Window::_initialize(WindowConfig *config) {
     this->window = SDL_CreateWindow(config->name.c_str(), config->width,

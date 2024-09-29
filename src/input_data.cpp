@@ -1,4 +1,4 @@
-#include "DragonQuest3Clone/utilities.hpp"
+#include "DragonQuest3Clone/Utilities/InputData.hpp"
 
 Utilities::InputData *Utilities::InputData::instance;
 
