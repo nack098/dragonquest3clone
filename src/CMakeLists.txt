@@ -29,6 +29,7 @@ add_library(game
     STATIC
         game.cpp
         player.cpp
+        human.cpp
     )
 
 
@@ -55,7 +56,7 @@ target_link_libraries(${PROJECT_NAME}
         SDL3
     )
 
-target_include_directories(${PROJECT_NAME} 
-    PRIVATE 
-        ${all_SRCS}
-    )
+add_custom_target(copy_assets
+    COMMAND ${CMAKE_COMMAND} -P ${PROJECT_SOURCE_DIR}/copy-assets.cmake
+)
+add_dependencies(${PROJECT_NAME} copy_assets)

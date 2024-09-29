@@ -20,7 +20,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 add_subdirectory(libs)
 
 include_directories(include)
+
 add_subdirectory(src)
 
 include(CTest)
 enable_testing()
+
