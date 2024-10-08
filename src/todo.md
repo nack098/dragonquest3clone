@@ -30,11 +30,11 @@ Additional
 
 Main Goal
 
-- [] Render background
-- [] Camera moving system
-- [] Prepare game state changing (For scene changing and fighting)
-- [] Create buffer for input system
-- [] Update data structure
+- [x] Render background
+- [x] Camera moving system
+- [x] Prepare game state changing (For scene changing and fighting)
+- [x] Create buffer for input system
+- [x] Update data structure
 
 Fix
 
@@ -49,6 +49,8 @@ Additional
 ## !! RESTRUCTURE
 
 ### 04 Oct 2024 - 07 October
+
+Since the current project structure is a mess. In need of restructuring.
 
 ---
 
