@@ -1,8 +1,9 @@
 .git
 .vscode
-build
+build/
 make
 CMakeFiles/
 *.pdb
 CMakeCache.txt
+Testing/
 .cache/
