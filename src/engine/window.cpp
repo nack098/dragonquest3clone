@@ -21,6 +21,12 @@ bool Window::PollEvent() {
         switch (e.type) {
         case SDL_EVENT_QUIT:
             return true;
+        case SDL_EVENT_KEY_UP:
+            this->input_manager->UpdateBuffer(e.key.key, KEY_UP);
+            return false;
+        case SDL_EVENT_KEY_DOWN:
+            this->input_manager->UpdateBuffer(e.key.key, KEY_DOWN);
+            return false;
         default:
             return false;
         }

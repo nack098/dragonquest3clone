@@ -56,7 +56,7 @@ Additional
 
 Main Goal
 
-- [] Finish input manager
+- [x] Finish input manager
 - [] Finish resource manager
 - [] Finish rendering sequence
 - [] Finish camera system
