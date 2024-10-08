@@ -1,10 +1,11 @@
-#include "DragonQuest3Clone/Renderer/engine.hpp"
-#include "DragonQuest3Clone/game.hpp"
+#include <DragonQuest3Clone/application.h>
 
 int main(void) {
-    SDL_SetLogPriorities(SDL_LOG_PRIORITY_VERBOSE);
-    Renderer::Engine engine;
-    Game::Main *game = Game::Main::get_instance();
-    engine.start(game);
+#ifdef DEBUG
+    SDL_SetHint("SDL_HINT_LOGGING", "verbose");
+#endif
+    Application::App *app = new Application::App();
+    app->Start();
+    delete app;
     return 0;
 }
