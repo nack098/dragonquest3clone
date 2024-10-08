@@ -1,7 +1,7 @@
 #include <DragonQuest3Clone/engine.h>
 
 namespace Engine {
-InputManager::InputManager() { Log(Application, "Initializing InputManager"); };
+InputManager::InputManager() { Log(System, "Initializing InputManager"); };
 
 void InputManager::UpdateBuffer(uint32_t value, KeyEventType type) {
     this->buffer.push(KeyEvent{type, (Key)value});
@@ -12,7 +12,7 @@ KeyState &InputManager::GetKey() {
     return this->state;
 }
 
-InputManager::~InputManager() { Log(Application, "Cleanup InputManager"); }
+InputManager::~InputManager() { Log(System, "Cleanup InputManager"); }
 
 void InputManager::_update_state() {
 

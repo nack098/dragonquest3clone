@@ -3,7 +3,7 @@
 namespace Engine {
 
 Window::Window() {
-    Log(Application, "Initializing Window");
+    Log(System, "Initializing Window");
     this->input_manager = new InputManager();
     this->resource_manager = new ResourceManager();
     this->renderer = NULL;
@@ -54,7 +54,7 @@ Window::~Window() {
     delete this->resource_manager;
     delete this->input_manager;
 
-    Log(Application, "Cleanup Window");
+    Log(System, "Cleanup Window");
     SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
     SDL_Quit();

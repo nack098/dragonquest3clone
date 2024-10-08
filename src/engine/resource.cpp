@@ -2,10 +2,8 @@
 
 namespace Engine {
 ResourceManager::ResourceManager() {
-    Log(Application, "Initialize ResourceManager");
+    Log(System, "Initialize ResourceManager");
 }
 
-ResourceManager::~ResourceManager() {
-    Log(Application, "Cleanup ResourceManager");
-}
+ResourceManager::~ResourceManager() { Log(System, "Cleanup ResourceManager"); }
 } // namespace Engine
