@@ -4,13 +4,14 @@ namespace Application {
 App::App() {
     Engine::Log(Engine::Application, "Initializing Application");
     this->window = new Engine::Window();
+    this->running = true;
 }
 
 void App::Start() {
     Engine::Log(Engine::Application, "Starting Application");
-    while (true) {
+    while (this->running) {
         if (this->window->PollEvent())
-            return;
+            this->running = false;
         this->Update();
         this->window->Render();
     }

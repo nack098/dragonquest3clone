@@ -1,3 +1,4 @@
+#include "DragonQuest3Clone/Engine/window.h"
 #include "DragonQuest3Clone/engine.h"
 
 namespace Engine {
@@ -10,6 +11,7 @@ Window::Window() {
     this->window = NULL;
 
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+    TTF_Init();
     SDL_CreateWindowAndRenderer("DragonQuest3Clone", WIDTH, HEIGHT,
                                 SDL_WINDOW_BORDERLESS, &this->window,
                                 &this->renderer);
@@ -57,6 +59,13 @@ Window::~Window() {
     Log(System, "Cleanup Window");
     SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
+    TTF_Quit();
     SDL_Quit();
+}
+
+void Quit() {
+    SDL_Event event;
+    event.type = SDL_EVENT_QUIT;
+    SDL_PushEvent(&event);
 }
 } // namespace Engine

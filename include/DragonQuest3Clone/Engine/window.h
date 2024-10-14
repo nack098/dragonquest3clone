@@ -1,6 +1,7 @@
 #pragma once
 extern "C" {
 #include <SDL3/SDL.h>
+#include <SDL3_ttf/SDL_ttf.h>
 }
 
 #include "constants.h"
@@ -28,4 +29,6 @@ class Window {
     ResourceManager *GetResourceManager();
     ~Window();
 };
+
+void Quit();
 } // namespace Engine

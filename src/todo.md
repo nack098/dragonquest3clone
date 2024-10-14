@@ -63,3 +63,13 @@ Main Goal
 - [] Finish rendering sequence
 - [] Finish camera system
 - [] Finish character movement
+
+Fix
+
+- Change Build Script from Bash script to Python Script
+
+Additional
+
+- Add Testing to project
+
+---
